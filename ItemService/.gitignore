@@ -1,0 +1,24 @@
+# Binários
+bin
+obj
+
+# Arquivos de usuário
+*.user
+*.userprefs
+
+# Arquivos de build
+[Dd]ebug/
+[Rr]elease/
+
+# NuGet
+.nuget/
+*.nupkg
+packages/
+
+# IDE
+.vs/
+.idea/
+
+# Logs e temporários
+*.log
+*.tmp
