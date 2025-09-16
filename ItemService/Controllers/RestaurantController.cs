@@ -5,7 +5,7 @@ using ItemService.DTOs;
 
 namespace ItemService.Controllers;
 
-[Route("api/items/restaurant")]
+[Route("api/items/restaurants")]
 [ApiController]
 public class RestaurantController : ControllerBase
 {
@@ -24,5 +24,12 @@ public class RestaurantController : ControllerBase
         var restaurants = _repository.GetAllRestaurants();
 
         return Ok(_mapper.Map<IEnumerable<RestaurantReadDTO>>(restaurants));
+    }
+
+    [HttpPost]
+    public ActionResult ReceiveRestaurant(RestaurantReadDTO restaurantReadDTO)
+    {
+        Console.WriteLine(restaurantReadDTO.Id);
+        return Ok();
     }
 }

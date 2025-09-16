@@ -17,8 +17,8 @@ namespace RestaurantService.ItemServiceHttpClient
 
         public async void SendRestaurantToItemService(RestaurantReadDTO readDTO)
         {
-            var requestContent = new StringContent
-                (
+            var requestContent =
+                new StringContent(
                     JsonSerializer.Serialize(readDTO),
                     Encoding.UTF8,
                     "application/json"
