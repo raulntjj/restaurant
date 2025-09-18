@@ -13,7 +13,7 @@ public class RabbitMqSubscriber : BackgroundService
   private readonly IModel _channel;
   private readonly IEventProcess _eventProcess;
 
-  public RabbitMqSubscriber(IConfiguration configuration)
+  public RabbitMqSubscriber(IConfiguration configuration, IEventProcess eventProcess)
   {
     _configuration = configuration;
     _connection =
@@ -38,6 +38,7 @@ public class RabbitMqSubscriber : BackgroundService
       exchange: "trigger",
       routingKey: ""
     );
+    _eventProcess = eventProcess;
   }
 
   protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -49,6 +50,8 @@ public class RabbitMqSubscriber : BackgroundService
     {
       ReadOnlyMemory<byte> body = EventArgs.Body;
       string? message = Encoding.UTF8.GetString(body.ToArray());
+      Console.WriteLine("Message received");
+      Console.WriteLine(message);
       _eventProcess.Process(message);
     };
 

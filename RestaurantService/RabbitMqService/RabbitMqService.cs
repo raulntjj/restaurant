@@ -32,10 +32,13 @@ namespace RestaurantService.RabbitMqClient
 
         public void PublishRestaurant(RestaurantReadDTO restaurantReadDTO)
         {
-            string mensagem =
+            string message =
                 JsonSerializer.Serialize(restaurantReadDTO);
             var body =
-                Encoding.UTF8.GetBytes(mensagem);
+                Encoding.UTF8.GetBytes(message);
+            
+            Console.WriteLine("Message sended");
+            Console.WriteLine(message);
 
             _channel.BasicPublish(
                 exchange: "trigger",

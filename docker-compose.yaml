@@ -8,10 +8,18 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__RestaurantConnection=server=db;database=restaurantdb;user=root;password=root
+      - ConnectionStrings__RestaurantConnection=server=mysql;database=restaurantdb;user=root;password=root
+      - RabbitMqHost=rabbitmq
+      - RabbitMqPort=5672
+      - RabbitMQ__UserName=guest
+      - RabbitMQ__Password=guest
     depends_on:
-      db:
+      mysql:
         condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - restaurant-network
 
   item-service:
     build: ./ItemService
@@ -20,11 +28,19 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=Development
+      - RabbitMqHost=rabbitmq
+      - RabbitMqPort=5672
+      - RabbitMQ__UserName=guest
+      - RabbitMQ__Password=guest
     depends_on:
-      db:
+      mysql:
         condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - restaurant-network
 
-  db:
+  mysql:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=root
@@ -34,10 +50,37 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "-p'root'"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - restaurant-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - restaurant-network
 
 volumes:
   mysql-data:
+  rabbitmq-data:
+
+networks:
+  restaurant-network:
+    driver: bridge
+    name: restaurant-network

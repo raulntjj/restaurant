@@ -26,9 +26,10 @@ public class EventProcess : IEventProcess
     var restaurantReadDTO = JsonSerializer.Deserialize<RestaurantReadDTO>(message);
     var restaurant = _mapper.Map<Restaurant>(restaurantReadDTO);
 
-    if (itemRepository.ExternalRestaurantExists(restaurant.Id))
+    if (!itemRepository.ExternalRestaurantExists(restaurant.Id))
     {
       itemRepository.CreateRestaurant(restaurant);
+      itemRepository.SaveChanges();
     }
   }
 }
