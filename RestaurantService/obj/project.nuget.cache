@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JsupbLmBk0Y=",
+  "dgSpecHash": "s+G2Jw8Fvjo=",
   "success": true,
   "projectFilePath": "/home/raulntjj/Desktop/dotnet/restaurant_microservice/RestaurantService/RestaurantService.csproj",
   "expectedPackageFiles": [
@@ -56,7 +56,7 @@
     "/home/raulntjj/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/mysqlconnector/2.4.0/mysqlconnector.2.4.0.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0/pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
-    "/home/raulntjj/.nuget/packages/rabbitmq.client/7.1.2/rabbitmq.client.7.1.2.nupkg.sha512",
+    "/home/raulntjj/.nuget/packages/rabbitmq.client/6.2.3/rabbitmq.client.6.2.3.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/swashbuckle.aspnetcore/6.6.2/swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.2/swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.2/swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
@@ -93,7 +93,6 @@
     "/home/raulntjj/.nuget/packages/system.text.encodings.web/9.0.9/system.text.encodings.web.9.0.9.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/system.text.json/9.0.9/system.text.json.9.0.9.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
-    "/home/raulntjj/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/home/raulntjj/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
   ],
