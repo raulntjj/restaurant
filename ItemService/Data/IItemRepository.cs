@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using ItemService.Models;
 
 namespace ItemService.Data;
